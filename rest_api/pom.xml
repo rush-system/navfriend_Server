@@ -18,6 +18,7 @@
 
     <properties>
         <restlet-version>2.3.1</restlet-version>
+        <plugin-version>3.2</plugin-version>
     </properties>
 
     <dependencies>
@@ -36,13 +37,38 @@
             <artifactId>org.restlet.ext.jetty</artifactId>
             <version>${restlet-version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.restlet.jee</groupId>
+            <artifactId>org.restlet.ext.servlet</artifactId>
+            <version>${restlet-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.restlet.jee</groupId>
+            <artifactId>org.restlet.ext.xml</artifactId>
+            <version>${restlet-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>6.0</version>
+        </dependency>
     </dependencies>
+
 
     <build>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.2</version>
+                <version>$(plugin-version)</version>
                 <configuration>
                     <source>1.7</source>
                     <target>1.7</target>
