@@ -9,19 +9,15 @@ import org.restlet.resource.ServerResource;
 
 import static java.lang.System.out;
 
-public class FirstServerResource{
+public class FirstServerResource extends ServerResource {
 
+		public static void main(String[] args) throws Exception {
+			new Server(Protocol.HTTP, 8182, FirstServerResource.class).start();
+		}
 
-	public static void main(String[]args) throws Exception {
-		Restlet restlet = new Restlet() {
-			@Override
-			public void handle(Request request, Response response) {
-				response.setEntity("Hello, Java RESTafarians!", MediaType.TEXT_PLAIN);
-			}
-		};
-
-		// Avoid conflicts with other Java containers listening on 8080!
-		new Server(Protocol.HTTP, 8182, restlet).start();
-	}
-
+		@Get
+		public String toString() {
+			return "Ciao Hola Bonjour Hello Ahoj";
+		}
 }
+
