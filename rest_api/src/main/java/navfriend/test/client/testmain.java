@@ -1,20 +1,8 @@
 package navfriend.test.client;
 
-import org.restlet.Client;
-import org.restlet.Context;
-import org.restlet.Request;
-import org.restlet.Response;
-import org.restlet.data.Method;
-import org.restlet.data.Protocol;
-import org.restlet.data.Reference;
 import org.restlet.resource.ClientResource;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.URL;
 import java.util.Date;
-
-import static java.lang.System.out;
 
 /**
  * Created by Lorenzo on 08/04/2015.
