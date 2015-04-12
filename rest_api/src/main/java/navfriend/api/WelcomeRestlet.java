@@ -1,31 +1,66 @@
 package navfriend.api;
 
+import navfriend.api.util.XmlHelper;
 import org.restlet.Request;
 import org.restlet.Response;
 import org.restlet.Restlet;
 import org.restlet.data.MediaType;
 import org.restlet.data.Method;
-import org.restlet.data.Status;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import java.io.StringWriter;
 
-/**
- * Created by Lorenzo on 10/04/2015.
- */
 public class WelcomeRestlet extends Restlet {
 
+	XmlHelper xmlHelper;
+
+	public WelcomeRestlet(){
+		xmlHelper = new XmlHelper();
+	}
+
+
 	@Override
-	public void handle(Request request, Response response) {
+	public void handle(Request request, Response response){
 
 
 		if(request.getMethod() == Method.GET){
-			Calendar cal = new GregorianCalendar();
 			response.setEntity("welcome in NavAPI", MediaType.TEXT_PLAIN);
+			try {
+				DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+				Document doc = docBuilder.newDocument();
 
-			response.setStatus(Status.SUCCESS_OK);
+				Element root = doc.createElement("Navfriend");
+				doc.appendChild(root);
 
+				Element name = doc.createElement("Name");
+				root.appendChild(name);
+
+
+				String xmlFile = xmlHelper.xmlToString(doc);
+
+
+				if(xmlFile.compareTo("XML ERROR")==0){
+					response.setEntity("SERVER PROCESSING ERROR", MediaType.TEXT_PLAIN);
+				}else{
+					response.setEntity(xmlFile, MediaType.TEXT_XML);
+				}
+
+
+			}catch(ParserConfigurationException ex){
+				ex.printStackTrace();
+			}
 		}
 
 	}
+
+
+
 }

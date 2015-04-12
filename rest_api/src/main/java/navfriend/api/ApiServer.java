@@ -21,8 +21,8 @@ public class ApiServer{
 
 
 		comp.getServers().add(httpApiServer);
-		comp.getDefaultHost().attach("/", new WelcomeRestlet());
-
+		//comp.getDefaultHost().attach("/", new WelcomeRestlet());
+		comp.getDefaultHost().attach(new HttpApiRouter());
 		comp.start();
 	}
 }
