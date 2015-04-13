@@ -9,9 +9,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Lorenzo on 12/04/2015.
- */
 public class XmlBuilder {
 
 	XmlHelper helper;
@@ -29,9 +26,9 @@ public class XmlBuilder {
 		doc.appendChild(elementList.get(0));
 	}
 
-	public void addElement(Element element){
-		elementList.add(element);
-		doc.appendChild(element);
+	public void addElement(Element elem, String element){
+		elementList.add(doc.createElement(element));
+		elem.appendChild(getElement(element));
 	}
 
 	public void addTextElement(Element element, String stringa){
@@ -39,14 +36,14 @@ public class XmlBuilder {
 	}
 
 	public Element getElement(String name){
-
 		for(Element elem : elementList){
 			if(elem.getNodeName().compareTo(name)==0)
 				return elem;
 		}
-
 		return null;
 	}
 
-
+	public String toString(){
+		return helper.xmlToString(doc);
+	}
 }

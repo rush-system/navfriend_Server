@@ -13,8 +13,10 @@ public class HttpApiRouter extends Application {
 	public Restlet createInboundRoot() {
 		Router router = new Router();
 
+
+
 		router.attach("/", new WelcomeRestlet());
-		router.attach("/{user}", new UserRestlet());
+		router.attach("/login", UserLoginRestlet.class);
 
 
 
