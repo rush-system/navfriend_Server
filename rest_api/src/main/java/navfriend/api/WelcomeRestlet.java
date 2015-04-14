@@ -54,10 +54,10 @@ public class WelcomeRestlet extends Restlet {
 				builder.addElement(builder.getElement("Navfriend"),"Name");
 				builder.addTextElement(builder.getElement("Name"), "Lorenzo");
 
-				builder.addElement(builder.getElement("Name"), "Età");
-				builder.addElement(builder.getElement("Età"), "Anno");
-				builder.addElement(builder.getElement("Età"), "Giorno");
-				builder.addElement(builder.getElement("Età"), "Mese");
+				builder.addElement(builder.getElement("Name"), "Eta");
+				builder.addElement(builder.getElement("Eta"), "Anno");
+				builder.addElement(builder.getElement("Eta"), "Giorno");
+				builder.addElement(builder.getElement("Eta"), "Mese");
 
 
 				String xmlFile = builder.toString();
